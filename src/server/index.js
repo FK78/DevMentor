@@ -1,10 +1,16 @@
-const express = require('express')
+import express from 'express';
+import postsRouter from './routes/posts.js';
+import usersRouter from './routes/users.js';
+import commentsRouter from './routes/comments.js';
+
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+app.use(express.json());
+
+app.use('/users', usersRouter);
+app.use('/posts', postsRouter);
+app.use('/comments', commentsRouter);
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)

@@ -12,12 +12,13 @@
   },
   "license": "MIT",
   "author": "FK78",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start-server": "node --watch --env-file=.env src/server/index.js"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "pg-promise": "^12.6.2"
   }
 }

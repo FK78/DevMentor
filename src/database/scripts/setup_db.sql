@@ -2,7 +2,7 @@ CREATE TYPE user_role as ENUM ('mentor', 'mentee');
 
 CREATE TABLE IF NOT EXISTS users (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-    name VARCHAR(128) NOT NULL,
+    username VARCHAR(128) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(72) NOT NULL,
     role user_role

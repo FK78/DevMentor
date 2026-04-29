@@ -10,7 +10,7 @@ router.get("/:id", usersController.getById);
 
 router.post(
   "/register",
-  validateSensitive(["username", "email", "password", "role"]),
+  validateSensitive(["username", "email", "password"]),
   usersController.create,
 );
 

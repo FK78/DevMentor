@@ -1,15 +1,16 @@
+CREATE TYPE user_role AS ENUM ('admin', 'mentor', 'mentee');
+
 CREATE TABLE IF NOT EXISTS users (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     username VARCHAR(128) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password_hash TEXT NOT NULL,
-    password_nonce TEXT NOT NULL,
+    password_salt TEXT NOT NULL,
     password_algorithm VARCHAR(32) NOT NULL DEFAULT 'argon2id',
     password_memory INTEGER NOT NULL,
     password_passes INTEGER NOT NULL,
     password_parallelism INTEGER NOT NULL,
     password_tag_length INTEGER NOT NULL,
-    password_pepper_version INTEGER NOT NULL DEFAULT 1,
     role user_role NOT NULL DEFAULT 'mentee'
 );
 

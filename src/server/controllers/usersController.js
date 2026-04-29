@@ -17,7 +17,6 @@ export async function create(req, res) {
   res.status(201).json({
     id: user.id,
     username: user.username,
-    role: user.role,
   });
 }
 

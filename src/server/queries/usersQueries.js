@@ -9,21 +9,20 @@ export function getById(id) {
 }
 
 export function create(
-  { username, email, role },
-  { hash, nonce, memory, passes, parallelism, tagLength },
+  { username, email },
+  { hash, salt, memory, passes, parallelism, tagLength },
 ) {
   return db.one(
-    "INSERT INTO users (username, email, password_hash, password_nonce, password_memory, password_passes, password_parallelism, password_tag_length, role) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id, username, email, role",
+    "INSERT INTO users (username, email, password_hash, password_salt, password_memory, password_passes, password_parallelism, password_tag_length) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id, username, email",
     [
       username,
       email,
       hash,
-      nonce,
+      salt,
       memory,
       passes,
       parallelism,
       tagLength,
-      role,
     ],
   );
 }

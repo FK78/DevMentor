@@ -1,11 +1,11 @@
 import { argon2, randomBytes } from "node:crypto";
 
 export function hashPassword(password) {
-  const nonce = randomBytes(16);
+  const salt = randomBytes(16);
 
   const parameters = {
     message: password,
-    nonce,
+    nonce: salt,
     parallelism: 4,
     tagLength: 64,
     memory: 65536,
@@ -20,8 +20,8 @@ export function hashPassword(password) {
       }
 
       resolve({
-        hash: derivedKey.toString("hex"),
-        nonce: nonce.toString("base64"),
+        hash: derivedKey.toString("base64"),
+        salt: salt.toString("base64"),
         parallelism: parameters.parallelism,
         tagLength: parameters.tagLength,
         memory: parameters.memory,

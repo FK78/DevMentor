@@ -1,5 +1,3 @@
-CREATE TYPE user_role as ENUM ('mentor', 'mentee');
-
 CREATE TABLE IF NOT EXISTS users (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     username VARCHAR(128) NOT NULL,
@@ -12,7 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
     password_parallelism INTEGER NOT NULL,
     password_tag_length INTEGER NOT NULL,
     password_pepper_version INTEGER NOT NULL DEFAULT 1,
-    role user_role
+    role user_role NOT NULL DEFAULT 'mentee'
 );
 
 CREATE TABLE IF NOT EXISTS posts (

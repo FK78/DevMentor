@@ -77,8 +77,10 @@ Server starts on [http://localhost:3000](http://localhost:3000) with file watchi
 |--------|----------|-------------|
 | GET | `/users` | Get all users |
 | GET | `/users/:id` | Get user by ID |
-| POST | `/users` | Create a user |
+| POST | `/users/register` | Register a user |
 | DELETE | `/users/:id` | Delete a user |
+
+Registering a user requires `username`, `email`, and `password`. New users default to the `mentee` role.
 
 ### Posts
 

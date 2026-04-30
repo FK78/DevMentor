@@ -1,4 +1,4 @@
 services:
   postgres:
     env_file:
-      - .env
+      - apps/server/.env

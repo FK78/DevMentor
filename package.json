@@ -16,8 +16,8 @@
   "main": "index.js",
   "packageManager": "pnpm@10.33.2",
   "scripts": {
-    "db:up": "docker compose up -d postgres",
-    "db:down": "docker compose stop postgres",
+    "db:up": "docker compose --env-file apps/server/.env up -d postgres",
+    "db:down": "docker compose --env-file apps/server/.env stop postgres",
     "dev": "pnpm --parallel --filter server --filter web dev",
     "dev:server": "pnpm --filter server dev",
     "dev:web": "pnpm --filter web dev",

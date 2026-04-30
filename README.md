@@ -5,7 +5,7 @@
 <h1 align="center">CodePharos</h1>
 
 <p align="center">
-  A mobile-first knowledge-sharing platform for software engineers. Mentors post guides, tips, and resources. Junior engineers find answers, ask questions, and grow. An AI assistant trained on the platform's content answers questions in context, an always-on engineering mentor.
+  A knowledge-sharing platform for software engineers. Mentors post guides, tips, and resources. Junior engineers find answers, ask questions, and grow. An AI assistant trained on the platform's content answers questions in context, an always-on engineering mentor.
 </p>
 
 ---

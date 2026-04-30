@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/FK78/DevMentor#readme",
+  "bugs": {
+    "url": "https://github.com/FK78/DevMentor/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FK78/DevMentor.git"
+  },
+  "license": "MIT",
+  "author": "FK78",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch --env-file=../../.env ./index.js",
+    "start": "node --env-file=../../.env ./index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg-promise": "^12.6.2"
+  },
+  "packageManager": "pnpm@10.33.2"
+}

@@ -1,4 +1,4 @@
-import db from "../../database/index.js";
+import db from "../database/index.js";
 
 export function getByEmail(email) {
   return db.one("SELECT * FROM users WHERE email = $1", [email]);

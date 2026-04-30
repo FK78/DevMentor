@@ -1,25 +1,27 @@
 {
-  "name": "devmentor",
+  "name": "codepharos",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://github.com/FK78/DevMentor#readme",
+  "homepage": "https://github.com/FK78/CodePharos#readme",
   "bugs": {
-    "url": "https://github.com/FK78/DevMentor/issues"
+    "url": "https://github.com/FK78/CodePharos/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FK78/DevMentor.git"
+    "url": "git+https://github.com/FK78/CodePharos.git"
   },
   "license": "MIT",
   "author": "FK78",
   "type": "module",
   "main": "index.js",
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
-    "start-server": "node --watch --env-file=.env src/server/index.js"
-  },
-  "dependencies": {
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "pg-promise": "^12.6.2"
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose stop postgres",
+    "dev": "pnpm --parallel --filter server --filter web dev",
+    "dev:server": "pnpm --filter server dev",
+    "dev:web": "pnpm --filter web dev",
+    "build:web": "pnpm --filter web build",
+    "typecheck:web": "pnpm --filter web typecheck"
   }
 }

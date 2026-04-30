@@ -1,12 +1,14 @@
 import express from "express";
-import { validateSensitive } from "../middleware/validate.js";
+import { validate, validateSensitive } from "../middleware/validate.js";
 import * as usersController from "../controllers/usersController.js";
 
 const router = express.Router();
 
-router.get("/", usersController.getAll);
-
-router.get("/:id", usersController.getById);
+router.post(
+  "/login",
+  validate(["email", "password"]),
+  usersController.getByEmail,
+);
 
 router.post(
   "/register",

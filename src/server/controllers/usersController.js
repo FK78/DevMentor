@@ -1,19 +1,23 @@
 import * as usersQueries from "../queries/usersQueries.js";
 import * as usersService from "../services/usersService.js";
 
-export async function getAll(req, res) {
-  const users = await usersQueries.getAll();
-  res.status(200).json(users);
-}
-
-export async function getById(req, res) {
-  const user = await usersQueries.getById(req.params.id);
-  res.status(200).json(user);
+export async function getByEmail(req, res) {
+  console.log(req.body)
+  const user = await usersQueries.getByEmail(req.body.email);
+  const hashObj = await usersService.hashPassword(
+    req.body.password,
+    Buffer.from(user.password_salt, "base64"),
+  );
+  const userVerify = usersService.compareHash(
+    user.password_hash,
+    hashObj.hash,
+  );
+  userVerify ? res.status(200).json(userVerify) : res.status(401).send(userVerify);
 }
 
 export async function create(req, res) {
-  const encryptedObj = await usersService.hashPassword(req.body.password);
-  const user = await usersQueries.create(req.body, encryptedObj);
+  const hashObj = await usersService.hashPassword(req.body.password);
+  const user = await usersQueries.create(req.body, hashObj);
   res.status(201).json({
     id: user.id,
     username: user.username,

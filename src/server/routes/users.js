@@ -4,9 +4,11 @@ import * as usersController from "../controllers/usersController.js";
 
 const router = express.Router();
 
-router.get("/", usersController.getAll);
-
-router.get("/:id", usersController.getById);
+router.post(
+  "/login",
+  validateSensitive(["email", "password"]),
+  usersController.getByEmail,
+);
 
 router.post(
   "/register",

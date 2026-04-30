@@ -1,11 +1,7 @@
 import db from "../../database/index.js";
 
-export function getAll() {
-  return db.many("SELECT * FROM users");
-}
-
-export function getById(id) {
-  return db.one("SELECT * FROM users WHERE id = $1", [id]);
+export function getByEmail(email) {
+  return db.one("SELECT * FROM users WHERE email = $1", [email]);
 }
 
 export function create(

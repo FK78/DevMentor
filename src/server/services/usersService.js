@@ -1,7 +1,7 @@
-import { argon2, randomBytes } from "node:crypto";
+import { argon2, randomBytes, timingSafeEqual } from "node:crypto";
 
-export function hashPassword(password) {
-  const salt = randomBytes(16);
+export function hashPassword(password, passed_salt) {
+  const salt = passed_salt ? passed_salt : randomBytes(16);
 
   const parameters = {
     message: password,
@@ -29,4 +29,12 @@ export function hashPassword(password) {
       });
     });
   });
+}
+
+export function compareHash(storedHash, generatedHash) {
+  const stored = Buffer.from(storedHash, "base64");
+  const generated = Buffer.from(generatedHash, "base64");
+  return (
+    stored.length === generated.length && timingSafeEqual(stored, generated)
+  );
 }
